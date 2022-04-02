@@ -1,5 +1,6 @@
 const jobData = require('../seed_data/jobData');
 const userData = require('../seed_data/userData');
+const jobApplicantData = require('../seed_data/jobApplicantData');
 
 exports.seed = function (knex) {
   return knex('users')
@@ -12,5 +13,11 @@ exports.seed = function (knex) {
     })
     .then(() => {
       return knex('jobs').insert(jobData);
+    })
+    .then(() => {
+      return knex('job_applicant').del();
+    })
+    .then(() => {
+      return knex('job_applicant').insert(jobApplicantData);
     });
 };

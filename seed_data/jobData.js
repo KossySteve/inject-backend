@@ -12,8 +12,6 @@ module.exports = [
     position: "Caregiver",
     pay: "$45",
     description: "one awesome product for photographers",
-    quantity: 400,
-    status: "In Stock",
     user_id: 2,
   },
   {
@@ -29,8 +27,6 @@ module.exports = [
     position: "Doctor",
     pay: "$45",
     description: "one awesome product for chefs",
-    quantity: 800,
-    status: "In Stock",
     user_id: 3,
   },
   {
@@ -41,14 +37,11 @@ module.exports = [
     email: "crosshospital@email.com",
     phone: "323-444-7890",
     address: "789 Wood St, Vancouver, BC",
-
     startDate: "22-04-2022",
     endDate: "26-04-2022",
     position: "Doctor",
     pay: "$95",
     description: "one awesome product for musicians",
-    quantity: 90,
-    status: "Out Of Stock",
     user_id: 1,
   },
 ];

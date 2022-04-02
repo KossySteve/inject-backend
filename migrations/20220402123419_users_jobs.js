@@ -7,16 +7,16 @@ exports.up = function (knex) {
         table.string('phone').notNullable();
         table.string('email').notNullable();
         table.string('position').notNullable();
-        table.string('email').notNullable();
         table.string('linkedInUrl').notNullable();
         table.string('resumeUrl').notNullable();
       })
       .createTable('jobs', (table) => {
         table.increments('id').primary();
-        table.string('Company').notNullable();
+        table.string('company').notNullable();
+        table.string('website').nullable();
         table.string('email').notNullable();
-        table.string('phone').nullable();
-        table.string('address').notNullable().defaultTo('Store Manager');
+        table.string('phone').notNullable();
+        table.string('address').notNullable();
         table.string('startDate').notNullable();
         table.string('endDate').notNullable();
         table.string('position').notNullable();
@@ -33,8 +33,7 @@ exports.up = function (knex) {
         table.timestamp('updated_at').defaultTo(knex.fn.now());
       })
 
-      //third table for user_id and job_id
-      .createTable('job_applicant', (table)=>{
+      .createTable('job_applicant', (table)=> {
         table.increments('id').primary();
         table
           .integer('user_id')
@@ -44,7 +43,7 @@ exports.up = function (knex) {
           .inTable('users')
           .onUpdate('CASCADE')
           .onDelete('CASCADE');
-          table
+        table
           .integer('job_id')
           .unsigned()
           .notNullable()
@@ -52,7 +51,7 @@ exports.up = function (knex) {
           .inTable('jobs')
           .onUpdate('CASCADE')
           .onDelete('CASCADE');
-          table.timestamp('updated_at').defaultTo(knex.fn.now());
+        table.timestamp('updated_at').defaultTo(knex.fn.now());
       })
   };
   
