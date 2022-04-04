@@ -1,6 +1,14 @@
 const router = require('express').Router();
-const userController = require('../controllers/userController');
+const usersController = require('../controllers/usersController');
+const authorize = require("../middleware/authorize");
 
-router.route('/').get(userController.index);
+router.route('/')
+   .get(usersController.getAll)
+   .post(usersController.register);
+router.route('/login').post(usersController.login);
+router.route('/current').get( authorize, usersController.current);
+
+router.route('/:userId').get(usersController.getOne);
+
 
 module.exports = router;
