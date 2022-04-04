@@ -5,7 +5,7 @@ const authorize = require("../middleware/authorize");
 exports.getJobs = (req, res) => {
  const query = knex('jobs');
  if (req.query.position) {
-  query.where({'jobs.position': req.query.position})
+  query.where({position: req.query.position})
 }
 
       query.then((jobs) => {
