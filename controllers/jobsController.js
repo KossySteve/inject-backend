@@ -16,6 +16,13 @@ exports.getJobs = (req, res) => {
       )
   };
 
+  exports.getJobsPosted = (req, res) => {
+    knex('jobs')
+        .where({'jobs.user_id': req.params.userId})
+        .then((jobRecords) => {
+            res.json(jobRecords);
+        })
+}
 
 exports.getJobsByPosition = (req, res) => {
     knex('jobs')

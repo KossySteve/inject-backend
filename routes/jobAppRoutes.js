@@ -1,13 +1,11 @@
 const router = require('express').Router();
-const jobsController = require('../controllers/jobsApplicationController');
-const authorize = require("../middleware/authorize");
+const jobsApplicationController = require('../controllers/jobsApplicationController');
 
 router.route('/')
-    .get(jobsController.getAllApplications)
-    .post(jobsController.addJobApplication);
+    .get(jobsApplicationController.getAllApplications)
+    .post(jobsApplicationController.addJobApplication);
 
-
-router.route('/:jobId').get(jobsController.getJobApplicationByJobId);
+router.route('/:jobId').get(jobsApplicationController.getJobApplicationByJobId);
 
 
 

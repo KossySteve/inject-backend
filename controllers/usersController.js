@@ -29,7 +29,7 @@ exports.getOne = (req, res) => {
           'users.linkedInUrl',
           'users.resumeUrl',
       )
-      //.join('ice_cream_flavors', 'ice_cream_flavors.id', 'users.ice_cream_flavor_id')
+
       .then((usersRecords) => {
           res.json(usersRecords);
       })
@@ -74,16 +74,17 @@ exports.login = (req, res) => {
             message: "Please enter the required fields"
         })
     }
-
     //lookup in our database that the email & password exist there, and that they are correct
     knex('users')
         .where({ email: email })
         .first()
         .then(user => {
-            const isPasswordCorrent = bcrypt.compareSync(password, user.password)
+            console.log(typeof password, password);
+console.log(typeof user.password, user.password );
+            const isPasswordCorrect = bcrypt.compareSync(password, user.password)
 
             //if incorrect, send an error
-            if (!isPasswordCorrent) {
+            if (!isPasswordCorrect) {
                 return res.status(400).send({
                     message: "Invalid Password. Please try again"
                 })
@@ -119,5 +120,15 @@ exports.current = (req, res) => {
             })
 }
 
-
+exports.deleteUser = (req, res) => {
+    knex('users')
+        .delete()
+        .where({id: req.params.userId})
+        .then(() => {
+            res.status(204).send(`User with id ${req.params.userId} has been deleted`)
+        })
+        .catch(err => {
+            res.status(400).send(`Error deleting user ${req.params.userId} ${err}`)
+    })
+  }
 

@@ -14,11 +14,13 @@ app.use(express.json());
 const userRoutes = require('./routes/userRoutes')
 app.use('/users', userRoutes)
 
+const jobAppRoutes = require('./routes/jobAppRoutes')
+app.use('/jobs/apply', jobAppRoutes)
+
 const jobRoutes = require('./routes/jobRoutes')
 app.use('/jobs', jobRoutes)
 
-const jobAppRoutes = require('./routes/jobAppRoutes')
-app.use('/jobs/apply', jobAppRoutes)
+
 
 app.listen(PORT, () => {
   console.log(`running at http://localhost:${PORT}`);
