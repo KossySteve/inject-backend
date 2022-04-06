@@ -12,6 +12,7 @@ This project is a job recruitment backend application built for health professio
 - Secondly run git clone with copied repo path  in your terminal. 
 - Open folders and navigate to  in-ject.com-backend folder.
 - Run npm install in this folder in terminal.
+- created a database injectdb, run Knex migration commands for database 
 - When install is done, also run node server.js in the same folder.
 - Server runs at http://localhost:5050.
 
