@@ -2,10 +2,10 @@ const router = require('express').Router();
 const jobsApplicationController = require('../controllers/jobsApplicationController');
 
 router.route('/')
-    .get(jobsApplicationController.getAllApplications)
-    .post(jobsApplicationController.addJobApplication);
+    .get(jobsApplicationController.getAllApplications) // get all the applications for all job
+    .post(jobsApplicationController.addJobApplication); // apply for a job
 
-router.route('/:jobId').get(jobsApplicationController.getJobApplicationByJobId);
+router.route('/:jobId').get(jobsApplicationController.getJobApplicationByJobId); // get all applications for a particular job
 
 
 
